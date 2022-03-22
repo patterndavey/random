@@ -1,0 +1,8 @@
+// If the extension is unfamiliar, it's called Crystal (or CrystalScript) and it's cool.
+
+local volume {
+	package import Windows.Forms -local {
+		! Form.Display[LABEL(title="crystal messagebox",body="Hello, World!"),BUTTON(buttonLabel="Cool");]
+			! waitfor event(Form.Button.Cool[PRESSED]) > waitfor event(Form.Button.Cool[PRESSED>RELEASED]) > Global.Terminate -force }
+	}
+} end
