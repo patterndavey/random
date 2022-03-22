@@ -1,0 +1,9 @@
+volume Screen {                                                       // Create the new volume Screen
+  procedure.ScreenMelting(global) {                                   // Make a new procedure called ScreenMelting that can be called from anywhere
+    get Screen.Display -temp:memory > function.ScreenLast             // Take an image of what is currently displayed and store it in a function
+    array.ScreenTransforms[-1,-2,-3,-6,0]                             // Make arrays for later
+    array.ScreenSplits[x+=1px(repeat GetMonitorSizeX)]
+    for(each[array.ScreenSplits]) push random.i(from[array.ScreenTransforms]) memoryArray.AppScrTrans // Give each 1px column on screen a random number from the array
+    Display.Screen(function.ScreenLast)
+      repeat -e:0.01s -u:flag.Finished {
+        Display.Screen(apply[])
